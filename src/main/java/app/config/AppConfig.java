@@ -1,6 +1,8 @@
 package app.config;
 
 import app.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +27,8 @@ public class AppConfig {
     }
 
     @Bean
-    public AnimalsCage animalsCage(Dog dog){
-        return new AnimalsCage(dog);
+    public AnimalsCage animalsCage(@Qualifier("dog") Animal animal){
+        return new AnimalsCage(animal);
     }
 
 }
